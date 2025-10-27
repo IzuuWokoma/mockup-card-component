@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card | Beioz Concept</title>
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: hsl(185, 75%, 39%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .card {
+      background: white;
+      width: 320px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .card img.banner {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+
+    .card img.avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 4px solid white;
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .card .info {
+      margin-top: 60px;
+      padding: 20px;
+    }
+
+    .card .info h2 {
+      font-size: 20px;
+      color: hsl(229, 23%, 23%);
+    }
+
+    .card .info p {
+      color: hsl(227, 10%, 46%);
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid hsl(227, 10%, 85%);
+      padding: 15px 0;
+      margin-top: 15px;
+    }
+
+    .stats div {
+      text-align: center;
+    }
+
+    .stats h3 {
+      font-size: 16px;
+      color: hsl(229, 23%, 23%);
+    }
+
+    .stats p {
+      font-size: 12px;
+      color: hsl(227, 10%, 46%);
+    }
+
+    button {
+      background: hsl(229, 23%, 23%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: hsl(229, 23%, 33%);
+    }
+
+    #msg {
+      margin-top: 15px;
+      color: white;
+      font-weight: 600;
+      display: none;
+    }
+
+    @media (max-width: 400px) {
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <img src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?auto=format&fit=crop&w=800&q=60" class="banner" alt="Banner">
+    <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Profile photo">
+    
+    <div class="info">
+      <h2 id="name">Jessica Walters</h2>
+      <p id="location">London, UK</p>
+
+      <div class="stats">
+        <div>
+          <h3>80K</h3>
+          <p>Followers</p>
+        </div>
+        <div>
+          <h3>803K</h3>
+          <p>Likes</p>
+        </div>
+        <div>
+          <h3>1.4K</h3>
+          <p>Photos</p>
+        </div>
+      </div>
+
+      <button id="greetBtn">👋 Greet</button>
+    </div>
+  </div>
+
+  <p id="msg"></p>
+
+  <script>
+    // Variables
+    let greetButton = document.getElementById("greetBtn");
+    let message = document.getElementById("msg");
+    let nameText = document.getElementById("name").textContent;
+    let locationText = document.getElementById("location").textContent;
+
+    // When the button is clicked
+    greetButton.addEventListener("click", function() {
+      // Simple DOM + string manipulation
+      let greeting = "👋 Hello " + nameText + " from " + locationText + "! You look amazing today!";
+      message.textContent = greeting;
+      message.style.display = "block";
+
+      // Hide after a few seconds
+      setTimeout(function() {
+        message.style.display = "none";
+      }, 4000);
+    });
+  </script>
+
+</body>
+</html>
